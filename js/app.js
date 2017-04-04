@@ -2,6 +2,7 @@ $(init);
 
 let difficulty = 3000;
 let $basket;
+let $score = 0;
 
 function init() {
   $basket = $('.dustbin');
@@ -60,7 +61,9 @@ function animateBall($ball) {
 function collisionCheck($ball) {
   if (collision($ball)) {
     $ball.stop().remove();
-    console.log('score');
+    $score ++;
+    $('.score').html($score);
+    // console.log('score');
   }
 }
 
