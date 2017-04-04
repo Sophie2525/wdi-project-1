@@ -29,6 +29,7 @@ button {
 }
 
 .container{
+  background-image: url(/Users/sopherz25/Development/wdi-project-1/images/Gamebackdrop.jpg);
   width: 650px;
   height: 650px;
   border: 1px solid #fff;
@@ -38,22 +39,24 @@ button {
 }
 
 .dustbin{
-  width: 50px;
-  height: 70px;
-  border: 1px solid #fff;
-  color: #fff;
+  background-image: url(/Users/sopherz25/Development/wdi-project-1/images/washbasket.png);
+  width: 71px;
+  height: 100px;
   margin: 0 auto;
   position: absolute;
   bottom: 0;
   left: 0;
+  z-index: 1;
 }
 
 .ball{
-  width: 50px;
-  height: 50px;
-  border: 1px solid #000;
-  background-color: red;
+  background-image: url(/Users/sopherz25/Development/wdi-project-1/images/football.png);
+  width: 60px;
+  height: 60px;
   position: absolute;
+  top: 0;
+  z-index: 0;
+  margin-left: 2px;
 }
 
 footer {
