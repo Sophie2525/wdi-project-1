@@ -2,6 +2,7 @@
 
 body{
   background-color: black;
+  font-family: 'Amatic SC', cursive;
 }
 
 .heading{
@@ -11,10 +12,11 @@ body{
 }
 
 h1 {
-  color: #fff;
+  color: #5b067b;
   text-align: center;
   font-size: 80px;
-  text-shadow: 5px 5px 13px  #5b067b;
+  font-weight: bold;
+  text-shadow: 3px 3px 5px #fff;
   margin: 20px;
 }
 
@@ -44,16 +46,18 @@ button {
   box-shadow: 1px 1px 2px #fff;
 
   display: block;
-  margin: 0 25px 10px 24px;
+  margin: .5px 25px 10px 24px;
 
   color: #fff;
   text-transform: uppercase;
-  font-size: 16px;
+  font-family: 'Amatic SC', cursive;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .scoreboard{
   width: 90px;
-  height: 72px;
+  height: 75px;
   background-color: #5b067b;
   border: 1px solid #000;
   border-radius: 5px;
@@ -63,7 +67,8 @@ button {
   color: #fff;
   text-align: center;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: bold;
   padding: 5px;
 }
 
@@ -77,13 +82,14 @@ button {
   color: #fff;
   margin-top: 5px;
   font-size: 40px;
+  font-weight: bold;
   text-align: center;
   padding: 5px;
 }
 
 .timerboard{
   width: 90px;
-  height: 72px;
+  height: 75px;
   background-color: #5b067b;
   border: 1px solid #000;
   border-radius: 5px;
@@ -93,7 +99,8 @@ button {
   color: #fff;
   text-align: center;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: bold;
   padding: 5px;
 }
 
