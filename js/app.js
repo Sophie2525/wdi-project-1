@@ -1,8 +1,9 @@
 $(init);
 
-let difficulty = 3000;
+const difficulty = 3000;
 let $basket;
 let $score = 0;
+let $time = 60;
 
 function init() {
   $basket = $('.dustbin');
@@ -10,9 +11,20 @@ function init() {
 }
 
 function startGame() {
-  // start timer
+  timer();
   moveBasket();
   setInterval(createBall, difficulty);
+
+  const counter = setInterval(timer, 1000);
+  function timer() {
+    $time -= 1;
+    // console.log($time);
+    if ($time === 0) {
+      clearInterval(counter);
+      alert('You scored' + '' + $score);
+    }
+    $('.timer').html($time);
+  }
 }
 
 function moveBasket() {
@@ -86,5 +98,7 @@ function collision($ball) {
 }
 
 function gameOver() {
-  console.log('gameover');
+  alert('Game Over!');
+  document.location.reload();
+  // console.log('gameover');
 }
