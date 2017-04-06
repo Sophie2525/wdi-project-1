@@ -4,6 +4,7 @@ const difficulty = 2500;
 let $basket;
 let $score = 0;
 let $time = 60;
+const $audio = $('#audio');
 
 function init() {
   $basket = $('.dustbin');
@@ -15,6 +16,12 @@ function startGame() {
   $score = 0;
   $('.score').text('');
   timer();
+  var newAudio = new Audio('../sounds/MOTD.mp3');
+  
+  // $audio.src = '../sounds/MOTD.mp3';
+  newAudio.play();
+  // console.log($audio);
+  // $audio.play();
   moveBasket();
   var createBalls = setInterval(createBall, difficulty);
 
@@ -28,6 +35,7 @@ function startGame() {
       clearInterval(counter);
       clearInterval(createBalls);
       $('.ball').remove().stop();
+      $('.alert').html('You scored' + ' ' + $score);
       console.log('You scored' + ' ' + $score);
       // startGame();
       // document.location.reload();

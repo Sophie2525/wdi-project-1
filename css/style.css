@@ -150,3 +150,9 @@ button {
   z-index: 0;
   margin-left: 2px;
 }
+
+.alert{
+  margin: 0 auto;
+  color: #fff;
+  font-size: 100px;
+}
