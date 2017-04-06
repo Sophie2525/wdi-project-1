@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>WDI Project 1</title>
   <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
   <link rel="stylesheet" href="css/style.css">
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script type="text/javascript" src="js/app.js"></script>
@@ -19,30 +20,23 @@
 
     <div class="sideElements">
 
-      <button class="Play">Play</button>
+      <button id="play">Play</button>
+      <button id="reset">Reset</button>
 
-
-      <div class="scoreboard">
+      <div class="board">
         <h3>Score:</h3>
         <div class="score"></div>
       </div>
 
-      <div class="timerboard">
+      <div class="board">
         <h3>Timer:</h3>
-        <div class="timer">60</div>
+        <div class="timer"></div>
       </div>
-
     </div>
-
     <div class="container">
       <div class="dustbin"></div>
-      <div class="alert"></div>
-      <!-- <div class="ball"></div> -->
+      <div class="alert animated"></div>
     </div>
-
-    <audio id="audio"></audio>
-
   </main>
-
 </body>
 </html>

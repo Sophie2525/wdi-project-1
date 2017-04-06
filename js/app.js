@@ -1,44 +1,43 @@
 $(init);
 
-const difficulty = 2500;
+let difficulty = 2500;
 let $basket;
-let $score = 0;
-let $time = 60;
-const $audio = $('#audio');
+let $score;
+let $time;
+let $counter;
+const audio = new Audio('sounds/MOTD.mp3');
+let $createBalls;
 
 function init() {
+  const $playButton = $('#play');
   $basket = $('.dustbin');
-  $('button').on('click', startGame);
+  $playButton.on('click', startGame);
 }
 
 function startGame() {
-  $time = 60;
+  $('.alert').html('');
+  $time = 10;
   $score = 0;
   $('.score').text('');
   timer();
-  var newAudio = new Audio('../sounds/MOTD.mp3');
-  
-  // $audio.src = '../sounds/MOTD.mp3';
-  newAudio.play();
-  // console.log($audio);
-  // $audio.play();
-  moveBasket();
-  var createBalls = setInterval(createBall, difficulty);
 
-  const counter = setInterval(timer, 1000);
+  audio.play();
+
+
+  moveBasket();
+  $createBalls = setInterval(createBall, difficulty);
+
+  $counter = setInterval(timer, 1000);
 
   function timer() {
     $time -= 1;
-    // console.log($time);
-    // nextLevel();
     if ($time === 0) {
-      clearInterval(counter);
-      clearInterval(createBalls);
+      clearInterval($counter);
+      clearInterval($createBalls);
       $('.ball').remove().stop();
       $('.alert').html('You scored' + ' ' + $score);
-      console.log('You scored' + ' ' + $score);
-      // startGame();
-      // document.location.reload();
+      animation('.alert', 'bounce');
+      setTimeout(nextLevel, 1000);
     }
     $('.timer').html($time);
   }
@@ -46,20 +45,16 @@ function startGame() {
 
 function moveBasket() {
   $(document).on('keydown', function move(e){
-    // $(document).keydown(function(e) {
-    // use .which to get the keycode of the arrow keys
     switch (e.which) {
-      // move left
       case 37:
         $('.dustbin').stop().animate({
           left: '-=100'
         });
         break;
-      // move right
       case 39:
         $('.dustbin').stop().animate({
           left: '+=100'
-        }); //right arrow key
+        });
         break;
     }
   });
@@ -92,7 +87,6 @@ function collisionCheck($ball) {
     $ball.stop().remove();
     $score ++;
     $('.score').html($score);
-    // console.log('score');
   }
 }
 
@@ -114,16 +108,34 @@ function collision($ball) {
   return true;
 }
 
-// function nextLevel(){
-//   if (($time === 0) && ($score > 15)){
-//     alert( 'next level');
-//   } else if (($time === 0) & ($score <= 15)){
-//     alert('Game Over!');
-//   }
-// }
+function gameOver(){
+  audio.pause();
+  $('.alert').html('GAME OVER!');
+  animation('.alert', 'bounce');
+  clearInterval($counter);
+  clearInterval($createBalls);
+  $('.ball').remove().stop();
 
-function gameOver() {
-  alert('Game Over!');
-  document.location.reload();
-  // console.log('gameover');
+  $('#reset').on('click', function(){
+    $('.score').html('');
+    $('.timer').html('');
+    $('.alert').html('');
+  });
+}
+
+function nextLevel(){
+  difficulty -= 250;
+  $('.alert').html('Next Level!');
+  animation('.alert', 'bounce');
+  setTimeout(nextLevelText, 1000);
+  setTimeout(startGame, 3000);
+}
+
+function nextLevelText(){
+  $('.alert').html('Get Ready...');
+  animation('.alert', 'bounce');
+}
+
+function animation(element, animation) {
+  $(element).addClass(animation).one('webkitAnimationEnd', () => $(element).removeClass(animation));
 }
