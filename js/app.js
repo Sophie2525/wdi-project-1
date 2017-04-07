@@ -1,49 +1,49 @@
-$(init);
+var Game = Game || {};
 
-let difficulty = 2500;
-let $basket;
-let $score;
-let $time;
-let $counter;
-const audio = new Audio('sounds/MOTD.mp3');
-let $createBalls;
+Game.difficulty = 2500;
+Game.$basket;
+Game.$score;
+Game.$time;
+Game.$counter;
+Game.audio = new Audio('sounds/MOTD.mp3');
+Game.$createBalls;
 
-function init() {
+Game.init = function init() {
   const $playButton = $('#play');
-  $basket = $('.dustbin');
-  $playButton.on('click', startGame);
-}
+  Game.$basket = $('.dustbin');
+  $playButton.on('click', Game.startGame);
+};
 
-function startGame() {
+Game.startGame = function startGame() {
   $('.alert').html('');
-  $time = 10;
-  $score = 0;
+  Game.$time = 60;
+  Game.$score = 0;
   $('.score').text('');
   timer();
 
-  audio.play();
+  Game.audio.play();
 
 
-  moveBasket();
-  $createBalls = setInterval(createBall, difficulty);
+  Game.moveBasket();
+  Game.$createBalls = setInterval(Game.createBall, Game.difficulty);
 
-  $counter = setInterval(timer, 1000);
+  Game.$counter = setInterval(timer, 1000);
 
   function timer() {
-    $time -= 1;
-    if ($time === 0) {
-      clearInterval($counter);
-      clearInterval($createBalls);
+    Game.$time -= 1;
+    if (Game.$time === 0) {
+      clearInterval(Game.$counter);
+      clearInterval(Game.$createBalls);
       $('.ball').remove().stop();
-      $('.alert').html('You scored' + ' ' + $score);
-      animation('.alert', 'bounce');
-      setTimeout(nextLevel, 1000);
+      $('.alert').html('You scored' + ' ' + Game.$score);
+      Game.animation('.alert', 'bounce');
+      setTimeout(Game.nextLevel, 1000);
     }
-    $('.timer').html($time);
+    $('.timer').html(Game.$time);
   }
-}
+};
 
-function moveBasket() {
+Game.moveBasket = function moveBasket() {
   $(document).on('keydown', function move(e){
     switch (e.which) {
       case 37:
@@ -58,62 +58,62 @@ function moveBasket() {
         break;
     }
   });
-}
+};
 
-function getRandomNumberFromRange() {
+Game.getRandomNumberFromRange = function getRandomNumberFromRange() {
   return Math.floor(Math.random() * (585 - 0 + 1)) + 0;
-}
+};
 
-function createBall() {
+Game.createBall = function createBall() {
   const $ball = $('<div class="ball"></div>');
-  const randomLeftValue = getRandomNumberFromRange();
+  const randomLeftValue = Game.getRandomNumberFromRange();
   $ball.css('left', randomLeftValue);
   $('.container').append($ball);
-  animateBall($ball);
-}
+  Game.animateBall($ball);
+};
 
-function animateBall($ball) {
+Game.animateBall = function animateBall($ball) {
   $ball.animate({
     top: `+=${$ball.parent().height()}px`
   }, {
-    duration: difficulty,
-    step: () => collisionCheck($ball),
-    complete: gameOver
+    duration: Game.difficulty,
+    step: () => Game.collisionCheck($ball),
+    complete: Game.gameOver
   });
-}
+};
 
-function collisionCheck($ball) {
-  if (collision($ball)) {
+Game.collisionCheck = function collisionCheck($ball) {
+  if (Game.collision($ball)) {
     $ball.stop().remove();
-    $score ++;
-    $('.score').html($score);
+    Game.$score ++;
+    $('.score').html(Game.$score);
   }
-}
+};
 
-function collision($ball) {
+Game.collision = function collision($ball) {
   const x1 = $ball.offset().left;
   const y1 = $ball.offset().top;
   const h1 = $ball.outerHeight(true);
   const w1 = $ball.outerWidth(true);
   const b1 = y1 + h1;
   const r1 = x1 + w1;
-  const x2 = $basket.offset().left;
-  const y2 = $basket.offset().top;
-  const h2 = $basket.outerHeight(true);
-  const w2 = $basket.outerWidth(true);
+  const x2 = Game.$basket.offset().left;
+  const y2 = Game.$basket.offset().top;
+  const h2 = Game.$basket.outerHeight(true);
+  const w2 = Game.$basket.outerWidth(true);
   const b2 = y2 + h2;
   const r2 = x2 + w2;
 
   if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
   return true;
-}
+};
 
-function gameOver(){
-  audio.pause();
+Game.gameOver = function gameOver(){
+  Game.audio.pause();
   $('.alert').html('GAME OVER!');
-  animation('.alert', 'bounce');
-  clearInterval($counter);
-  clearInterval($createBalls);
+  Game.animation('.alert', 'bounce');
+  clearInterval(Game.$counter);
+  clearInterval(Game.$createBalls);
   $('.ball').remove().stop();
 
   $('#reset').on('click', function(){
@@ -121,21 +121,23 @@ function gameOver(){
     $('.timer').html('');
     $('.alert').html('');
   });
-}
+};
 
-function nextLevel(){
-  difficulty -= 250;
+Game.nextLevel = function nextLevel(){
+  Game.difficulty -= 250;
   $('.alert').html('Next Level!');
-  animation('.alert', 'bounce');
-  setTimeout(nextLevelText, 1000);
-  setTimeout(startGame, 3000);
-}
+  Game.animation('.alert', 'bounce');
+  setTimeout(Game.nextLevelText, 1000);
+  setTimeout(Game.startGame, 3000);
+};
 
-function nextLevelText(){
+Game.nextLevelText = function nextLevelText(){
   $('.alert').html('Get Ready...');
-  animation('.alert', 'bounce');
-}
+  Game.animation('.alert', 'bounce');
+};
 
-function animation(element, animation) {
+Game.animation = function animation(element, animation) {
   $(element).addClass(animation).one('webkitAnimationEnd', () => $(element).removeClass(animation));
-}
+};
+
+$(Game.init.bind(Game));
