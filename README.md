@@ -1,6 +1,8 @@
 # wdi-project-1
 This game was my first project for WDI in London.
 
+<img width="1044" alt="screen shot 2017-04-07 at 06 10 31" src="https://cloud.githubusercontent.com/assets/26185296/24786382/f779413c-1b58-11e7-9232-8bcc0b982de2.png">
+
 
 ## Introduction
 The Laundry Bin Basket game is a take on the Dustbin Challenge that has taken over the football world. It is built on the concept of a standard coin collector game where you move up through the levels collecting as many coins as possible.
