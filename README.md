@@ -2,24 +2,23 @@
 This game was my first project for WDI in London.
 
 
-##Introduction
+## Introduction
 The Laundry Bin Basket game is a take on the Dustbin Challenge that has taken over the football world. It is built on the concept of a standard coin collector game where you move up through the levels collecting as many coins as possible.
 
 This was built as my first project on the Web Development Immersive course at General Assembly using JavaScript. A hosted version of the Laundry Bin Challenge can be found [here] (https://ancient-eyrie-15940.herokuapp.com/) The code can be viewed [here] (https://github.com/Sophie2525/wdi-project-1)
 
-##How to Play
+## How to Play
 When the page is loaded, the user should press the 'Play' button located on the left hand side. Within seconds, footballs will start falling from the top of the game screen. The user will move the laundry bin along the bottom using the **right and left arrow keys** to collect the footballs.
 
 For every football collected, you **score 1 point**. If you make it through the time without missing any footballs then you move onto the next level where the footballs will come down at a slightly fast pace. If you miss the ball, it is immediately **game over** and you have to click 'Reset' and start again.
 
-##How it was built
+## How it was built
 The **Laundry Bin Challenge** was built in **HTML/CSS and Javascript**. It used the following libraries:
 [jQuery Library] (https://code.jquery.com/)
 [Animate CSS] (https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css)
 [Google Fonts] (https://fonts.google.com/)
 
-##Biggest win/Challenge
-
+## Biggest win/Challenge
 The biggest challenge of the project was learning about **Collision Detection** so that a score could be generated when the laundry bin hit the football.
 
 The first step of this was to find out all the dimensions of the football and laundry bin so that a function could be written to check for a collision.
@@ -70,5 +69,5 @@ Game.animateBall = function animateBall($ball) {
       });
     };**
 
-##Future Development
-The next step in the development of the game is to generated a total scoreboard to contain the scores from each level. 
+## Future Development
+The next step in the development of the game is to generated a total scoreboard to contain the scores from each level.
