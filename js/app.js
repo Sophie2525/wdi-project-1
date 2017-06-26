@@ -1,6 +1,6 @@
 var Game = Game || {};
 
-Game.difficulty = 2500;
+Game.difficulty = 2000;
 Game.$basket;
 Game.$score;
 Game.$time;
@@ -16,7 +16,7 @@ Game.init = function init() {
 
 Game.startGame = function startGame() {
   $('.alert').html('');
-  Game.$time = 60;
+  Game.$time = 30;
   Game.$score = 0;
   $('.score').text('');
   timer();
@@ -92,11 +92,15 @@ Game.collisionCheck = function collisionCheck($ball) {
 
 Game.collision = function collision($ball) {
   const x1 = $ball.offset().left;
+  // position of element from left of parent
   const y1 = $ball.offset().top;
+  // position of element from top of the parent
   const h1 = $ball.outerHeight(true);
   const w1 = $ball.outerWidth(true);
   const b1 = y1 + h1;
+  // offset top + outerheight
   const r1 = x1 + w1;
+  // offset left plus outerwidth;
   const x2 = Game.$basket.offset().left;
   const y2 = Game.$basket.offset().top;
   const h2 = Game.$basket.outerHeight(true);

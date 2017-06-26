@@ -72,4 +72,6 @@ Game.animateBall = function animateBall($ball) {
     };**
 
 ## Future Development
-The next step in the development of the game is to generated a total scoreboard to contain the scores from each level.
+  - The next step in the development of the game is to generated a total scoreboard to contain the scores from each level.
+  - Refactor the code to become completely object oriented.
+  - Add in more audio sounds for Game Over and when collect the footballs. 

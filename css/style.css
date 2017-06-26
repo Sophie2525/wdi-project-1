@@ -82,7 +82,7 @@ button {
 }
 
 .container{
-  background-image: url(/Users/sopherz25/Development/wdi-project-1/images/Gamebackdrop.jpg);
+  background-image: url(http://i.imgur.com/eKGk1rC.jpg);
   width: 650px;
   height: 650px;
   margin: 0 auto;
@@ -93,7 +93,7 @@ button {
 }
 
 .dustbin{
-  background-image: url(/Users/sopherz25/Development/wdi-project-1/images/washbasket.png);
+  background-image: url(http://i.imgur.com/swyNG33.png);
   width: 71px;
   height: 100px;
   margin: 0 auto;
@@ -104,7 +104,7 @@ button {
 }
 
 .ball{
-  background-image: url(/Users/sopherz25/Development/wdi-project-1/images/football.png);
+  background-image: url(http://i.imgur.com/6VUDLtI.png);
   width: 60px;
   height: 60px;
   position: absolute;
